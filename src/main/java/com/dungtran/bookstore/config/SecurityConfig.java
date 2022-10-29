@@ -27,7 +27,7 @@ public class SecurityConfig {
 	 SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 		 
 		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		 .and().csrf().ignoringAntMatchers("/register","/login").csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+		 .and().csrf().ignoringAntMatchers("/register","/login","/gioHang/**","/diaChi/**","/donHang/**","/sach/**").csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 		 .and().addFilterAfter(new UserInformationFilter(), BasicAuthenticationFilter.class)
 		 .addFilterAfter(new JWTTokenGeneratorFilter(), BasicAuthenticationFilter.class)
          .addFilterBefore(new JWTTokenValidatorFilter(), BasicAuthenticationFilter.class)
